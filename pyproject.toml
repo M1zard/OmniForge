@@ -1,0 +1,44 @@
+# pyproject.toml
+[tool.poetry]
+name = "omniforge"
+version = "0.1.0"
+description = "High-performance, scalable IDE architecture"
+authors = ["OmniForge Architect"]
+readme = "README.md"
+packages = [
+    { include = "omniforge_api", from = "src" },
+    { include = "omniforge_host", from = "src" },
+    { include = "omniforge_main", from = "src" },
+    { include = "omniforge_ext_host", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pyzmq = "^25.1.1"
+msgpack = "^1.0.7"
+pydantic = "^2.5.2"
+uuid7 = "^0.1.0"
+structlog = "^23.2.0"
+python-lsp-server = {extras = ["all"], version = "^1.9.0"}
+pyte = "^0.8.0"
+pywinpty = {version = "^2.0.12", markers = "sys_platform == 'win32'"}
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.7.1"
+ruff = "^0.1.8"
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
